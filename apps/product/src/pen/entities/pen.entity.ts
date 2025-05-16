@@ -1,1 +1,4 @@
-export class Pen {}
+export class Pen {
+  name: string;
+  price: number;
+}

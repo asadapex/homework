@@ -1,15 +1,13 @@
 import { Controller } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 import { PenService } from './pen.service';
-import { CreatePenDto } from './dto/create-pen.dto';
-import { UpdatePenDto } from './dto/update-pen.dto';
 
 @Controller()
 export class PenController {
   constructor(private readonly penService: PenService) {}
 
   @MessagePattern('createPen')
-  create(@Payload() createPenDto: CreatePenDto) {
+  create(@Payload() createPenDto: any) {
     return this.penService.create(createPenDto);
   }
 
@@ -24,7 +22,7 @@ export class PenController {
   }
 
   @MessagePattern('updatePen')
-  update(@Payload() updatePenDto: UpdatePenDto) {
+  update(@Payload() updatePenDto: any) {
     return this.penService.update(updatePenDto.id, updatePenDto);
   }
 
